@@ -1,31 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-
-type TTodo = {
-  __v: string;
-  _id: string;
-  createdAt: string;
-  description: string;
-  isDone: string;
-  title: string;
-  updatedAt: string;
-};
-
-type TTodoCreateOutput = {
-  data: TTodo;
-  message: string;
-  statusCode: 201;
-  success: boolean;
-};
-
-type TCreateTodoInput = { title: string; description: string };
-
-type TGetAllTodosOutput = {
-  data: TTodo[];
-  message: string;
-  statusCode: 200;
-  success: boolean;
-};
+import {
+  TTodoCreateOutput,
+  TCreateTodoInput,
+  TGetAllTodosOutput,
+} from "../type";
+import { NotificationBar } from "./NotificationBar";
 
 export function TodoContainer() {
   const qc = useQueryClient();
@@ -33,13 +13,15 @@ export function TodoContainer() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const [showNotification, setShowNotification] = useState<{
-    type: "error" | "success" | "null";
-    message: string;
-  }>({
-    type: "null",
-    message: "",
-  });
+  // const [showNotification, setShowNotification] = useState<{
+  //   type: "error" | "success" | "null";
+  //   message: string;
+  // }>({
+  //   type: "null",
+  //   message: "",
+  // });
+
+  const [showNotification, setShowNotification] = useState(false);
 
   const addTodoMutation = useMutation<
     TTodoCreateOutput,
@@ -63,10 +45,10 @@ export function TodoContainer() {
     },
     onSuccess: (data) => {
       console.log("sucess", data);
-      setShowNotification({
-        type: "success",
-        message: data.message,
-      });
+      // setShowNotification({
+      //   type: "success",
+      //   message: data.message,
+      // });
 
       // we can invalidate the query that fetch the todos data
       qc.invalidateQueries({
@@ -78,10 +60,10 @@ export function TodoContainer() {
     },
     onError: (error) => {
       console.log("error", error);
-      setShowNotification({
-        type: "error",
-        message: error.message || "Failed to create todo",
-      });
+      // setShowNotification({
+      //   type: "error",
+      //   message: error.message || "Failed to create todo",
+      // });
     },
   });
 
@@ -120,19 +102,25 @@ export function TodoContainer() {
   }
 
   return (
-    <div>
-      <h1>My Todos</h1>
-
-      {showNotification.type === "null" ? null : (
-        <div
-          id="notification"
-          className={
-            showNotification.type === "error" ? "text-red" : "text-green"
-          }
-        >
-          {showNotification.message}
-        </div>
-      )}
+    <div
+      style={{
+        backgroundColor: "#111827",
+        width: "100vh",
+        margin: "0 auto",
+        borderRadius: "18px",
+      }}
+    >
+      {/* {showNotification.type === "null" ? null : <NotificationTab />} */}
+      {showNotification ? <NotificationBar /> : null}
+      <h1
+        style={{
+          textAlign: "center",
+          paddingTop: "50px",
+          color: "white",
+        }}
+      >
+        My Todos
+      </h1>
 
       {/* form container */}
       <div id="form_container">
@@ -141,35 +129,67 @@ export function TodoContainer() {
             event.preventDefault();
             handleAddTodo();
           }}
+          style={{
+            margin: "40px 120px",
+            textAlign: "center",
+          }}
         >
           {/* title */}
-          <label htmlFor="title">
-            Title
-            <input
-              name="title"
-              id="title"
-              value={title}
-              onChange={(event) => {
-                const value = event.target.value;
-                setTitle(value);
-              }}
-            />
-          </label>
+          <input
+            name="title"
+            value={title}
+            placeholder="Enter Title"
+            required
+            onChange={(event) => {
+              const value = event.target.value;
+              setTitle(value);
+            }}
+            style={{
+              width: "99%",
+              borderRadius: "20px",
+              height: "40px",
+              marginBottom: "10px",
+            }}
+          />{" "}
+          <br />
           {/* description */}
-          <label htmlFor="description">
-            Description
-            <textarea
-              value={description}
-              name="description"
-              id="description"
-              onChange={(event) => {
-                const value = event.target.value;
-                setDescription(value);
-              }}
-            ></textarea>
-          </label>
-
-          <button type="submit">Add</button>
+          <input
+            value={description}
+            name="description"
+            placeholder="Enter Description"
+            required
+            onChange={(event) => {
+              const value = event.target.value;
+              setDescription(value);
+            }}
+            style={{
+              width: "99%",
+              borderRadius: "20px",
+              height: "40px",
+              marginBottom: "10px",
+            }}
+          />
+          <br />
+          <button
+            type="submit"
+            style={{
+              width: "100%",
+              height: "35px",
+              borderRadius: "20px",
+              backgroundColor: "springgreen",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              if (title && description) {
+                setShowNotification(true);
+                setTimeout(() => {
+                  setShowNotification(false);
+                }, 4000);
+              }
+            }}
+          >
+            Add
+          </button>
         </form>
       </div>
 
@@ -187,13 +207,14 @@ export function TodoContainer() {
               style={{
                 border: "1px solid #ccc",
                 padding: "10px",
+                width: "100vh",
+                margin: "10px 120px",
+                borderRadius: "18px",
+                backgroundColor: "#1f2937",
               }}
             >
-              <p>Tittle: {todo.title}</p>
+              <h2>Tittle: {todo.title}</h2>
               <p>Description: {todo.description}</p>
-              <p>Is Completed: {todo.isDone}</p>
-              <p>Created At: {todo.createdAt}</p>
-              <p>Updated At: {todo.updatedAt}</p>
             </div>
           );
         })}
