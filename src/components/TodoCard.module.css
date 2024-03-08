@@ -11,3 +11,24 @@
   border-radius: 18px;
   background-color: #1f2937;
 }
+
+.buttons {
+  display: flex;
+  justify-content: right;
+  gap: 6px;
+}
+
+.button {
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+.content {
+  color: white;
+  padding-left: 20px;
+}
+
+.content h2 {
+  margin-top: 0;
+}
