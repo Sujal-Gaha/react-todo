@@ -1,0 +1,13 @@
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100vh;
+  margin: 10px 120px;
+  border-radius: 18px;
+  background-color: #1f2937;
+}
