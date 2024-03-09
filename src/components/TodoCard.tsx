@@ -10,6 +10,7 @@ export function TodoCard() {
   const [selectedTitle, setSelectedTitle] = useState("");
   const [selectedDescription, setSelectedDescription] = useState("");
   const [selectedId, setSelectedId] = useState("");
+  const [isUpdatingModalOpen, setIsUpdatingModalOpen] = useState(false);
   const qc = useQueryClient();
 
   const { data, isLoading, isError, error } = useQuery<
@@ -134,7 +135,11 @@ export function TodoCard() {
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              handleFormSubmission();
+              setIsUpdatingModalOpen(true);
+              setTimeout(() => {
+                handleFormSubmission();
+                setIsUpdatingModalOpen(false);
+              }, 2500);
             }}
           >
             <br />
@@ -168,6 +173,19 @@ export function TodoCard() {
             <br />
             <button>Update</button>
           </form>
+        </div>
+      ) : null}
+      {isUpdatingModalOpen ? (
+        <div className={styles.updateModal}>
+          <h1
+            style={{
+              opacity: "20",
+              fontWeight: "bolder",
+              color: "white",
+            }}
+          >
+            Updating your todo...
+          </h1>
         </div>
       ) : null}
     </div>
