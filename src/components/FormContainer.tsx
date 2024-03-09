@@ -9,7 +9,8 @@ export function FormContainer() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [showNotification, setShowNotification] = useState(false);
+  const [showNotification, setShowNotification] = useState<boolean>(false);
+  const [isAddingModalOpen, setIsAddingModalOpen] = useState<boolean>(false);
 
   const addTodoMutation = useMutation<
     TTodoCreateOutput,
@@ -60,8 +61,18 @@ export function FormContainer() {
       <form
         className={styles.formElement}
         onSubmit={(event) => {
-          event.preventDefault();
-          handleAddTodo();
+          if (title && description) {
+            event.preventDefault();
+            setIsAddingModalOpen(true);
+            setTimeout(() => {
+              handleAddTodo();
+              setIsAddingModalOpen(false);
+              setShowNotification(true);
+            }, 2500);
+            setTimeout(() => {
+              setShowNotification(false);
+            }, 6500);
+          }
         }}
       >
         <input
@@ -88,21 +99,15 @@ export function FormContainer() {
           }}
         />
         <br />
-        <button
-          type="submit"
-          className={styles.addBtn}
-          onClick={() => {
-            if (title && description) {
-              setShowNotification(true);
-              setTimeout(() => {
-                setShowNotification(false);
-              }, 4000);
-            }
-          }}
-        >
+        <button type="submit" className={styles.addBtn}>
           Add
         </button>
       </form>
+      {isAddingModalOpen ? (
+        <div className={styles.addModal}>
+          <h1>Adding your todo...</h1>
+        </div>
+      ) : null}
     </>
   );
 }
