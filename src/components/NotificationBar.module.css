@@ -1,19 +1,23 @@
 .notificationBar {
   position: fixed;
   right: 506px;
-  top: 32px;
+  top: 20px;
   border-radius: 4px;
   background-color: #1f2937;
   box-shadow: 0px -4px #57b8ec;
-  padding: 2px 20px;
   color: white;
 }
 
 .closeBtn {
-  position: fixed;
-  margin-bottom: 0;
-  right: 27%;
+  float: right;
+  position: relative;
+  margin: 0;
+  padding-right: 0;
   font-size: 25px;
   color: white;
   cursor: pointer;
+}
+
+.text {
+  padding: 2px 20px;
 }

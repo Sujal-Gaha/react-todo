@@ -24,6 +24,11 @@
   cursor: pointer;
 }
 
+.button:hover {
+  transition: 0.3s ease-in all;
+  color: #57b8ec;
+}
+
 .content {
   color: white;
   padding-left: 20px;
@@ -31,4 +36,46 @@
 
 .content h2 {
   margin-top: 0;
+}
+
+.modalContainer {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #34495e;
+  height: 45vh;
+  width: 80vh;
+  border-radius: 8px;
+  border: 1px solid darkgray;
+  color: white;
+}
+
+.modalContainer form {
+  text-align: center;
+}
+
+.modalContainer form input {
+  width: 60%;
+  height: 25px;
+  border-radius: 10px;
+}
+
+.modalContainer form button {
+  background-color: springgreen;
+  width: 61%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.editCloseBtn {
+  font-size: 25px;
+  float: right;
+  position: relative;
+  cursor: pointer;
+}
+
+.editCloseBtn:hover {
+  transition: 0.4s ease-in all;
+  color: #57b8ec;
 }

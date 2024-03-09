@@ -13,8 +13,10 @@ export function NotificationBar() {
             className={styles.closeBtn}
             onClick={() => setIsNotificationTabOpen(false)}
           />
-          <h3>Todo Added</h3>
-          <p>A new Todo has been added succesfully!</p>
+          <div className={styles.text}>
+            <h3>Todo Added</h3>
+            <p>A new Todo has been added succesfully!</p>
+          </div>
         </div>
       ) : null}
     </>
