@@ -92,3 +92,8 @@
   display: grid;
   place-items: center;
 }
+
+.updateModal h1 {
+  font-weight: bolder;
+  color: white;
+}

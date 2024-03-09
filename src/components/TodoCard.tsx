@@ -10,7 +10,8 @@ export function TodoCard() {
   const [selectedTitle, setSelectedTitle] = useState("");
   const [selectedDescription, setSelectedDescription] = useState("");
   const [selectedId, setSelectedId] = useState("");
-  const [isUpdatingModalOpen, setIsUpdatingModalOpen] = useState(false);
+  const [isUpdatingModalOpen, setIsUpdatingModalOpen] =
+    useState<boolean>(false);
   const qc = useQueryClient();
 
   const { data, isLoading, isError, error } = useQuery<
@@ -177,15 +178,7 @@ export function TodoCard() {
       ) : null}
       {isUpdatingModalOpen ? (
         <div className={styles.updateModal}>
-          <h1
-            style={{
-              opacity: "20",
-              fontWeight: "bolder",
-              color: "white",
-            }}
-          >
-            Updating your todo...
-          </h1>
+          <h1>Updating your todo...</h1>
         </div>
       ) : null}
     </div>
