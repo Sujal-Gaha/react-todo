@@ -9,6 +9,10 @@ const router = createBrowserRouter([
     element: <TodoContainer />,
   },
   {
+    path: "/todos",
+    element: <TodoContainer />,
+  },
+  {
     path: "/about",
     element: <p>i am about page</p>,
   },

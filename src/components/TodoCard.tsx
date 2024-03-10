@@ -2,16 +2,22 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { TGetAllTodosOutput } from "../type";
 import styles from "./TodoCard.module.css";
 import { MdDelete, MdEdit } from "react-icons/md";
-import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
+import { useTodoCardCtx } from "../store/todo-card";
 
 export function TodoCard() {
-  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
-  const [selectedTitle, setSelectedTitle] = useState("");
-  const [selectedDescription, setSelectedDescription] = useState("");
-  const [selectedId, setSelectedId] = useState("");
-  const [isUpdatingModalOpen, setIsUpdatingModalOpen] =
-    useState<boolean>(false);
+  const {
+    isEditModalOpen,
+    isUpdatingModalOpen,
+    selectedDescription,
+    selectedId,
+    selectedTitle,
+    setIsUpdatingModalOpen,
+    setIsEditModalOpen,
+    setSelectedDescription,
+    setSelectedId,
+    setSelectedTitle,
+  } = useTodoCardCtx();
   const qc = useQueryClient();
 
   const { data, isLoading, isError, error } = useQuery<
