@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TodoContainer } from "./components/TodoContainer";
+import { TodoListProvider } from "./store/todo-list";
 
 const router = createBrowserRouter([
   {
@@ -10,7 +11,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/todos",
-    element: <TodoContainer />,
+    element: (
+      <TodoListProvider>
+        <TodoContainer />
+      </TodoListProvider>
+    ),
   },
   {
     path: "/about",

@@ -1,16 +1,22 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
 import { TCreateTodoInput, TTodoCreateOutput } from "../type";
 import { NotificationBar } from "./NotificationBar";
 import styles from "./FormContainer.module.css";
+import { useTodoListCtx } from "../store/todo-list";
 
 export function FormContainer() {
   const qc = useQueryClient();
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [showNotification, setShowNotification] = useState<boolean>(false);
-  const [isAddingModalOpen, setIsAddingModalOpen] = useState<boolean>(false);
+  const {
+    title,
+    setTitle,
+    description,
+    setDescription,
+    showNotification,
+    setShowNotification,
+    isAddingModalOpen,
+    setIsAddingModalOpen,
+  } = useTodoListCtx();
 
   const addTodoMutation = useMutation<
     TTodoCreateOutput,
@@ -68,10 +74,10 @@ export function FormContainer() {
               handleAddTodo();
               setIsAddingModalOpen(false);
               setShowNotification(true);
-            }, 2500);
+            }, 2000);
             setTimeout(() => {
               setShowNotification(false);
-            }, 6500);
+            }, 6000);
           }
         }}
       >

@@ -1,17 +1,17 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import styles from "./NotificationBar.module.css";
+import { useTodoListCtx } from "../store/todo-list";
 
 export function NotificationBar() {
-  const [isNotificationTabOpen, setIsNotificationTabOpen] =
-    useState<boolean>(true);
+  const { showNotification, setShowNotification } = useTodoListCtx();
   return (
     <>
-      {isNotificationTabOpen ? (
+      {showNotification ? (
         <div className={styles.notificationBar}>
           <IoIosClose
             className={styles.closeBtn}
-            onClick={() => setIsNotificationTabOpen(false)}
+            onClick={() => setShowNotification(false)}
           />
           <div className={styles.text}>
             <h3>Todo Added</h3>

@@ -3,7 +3,7 @@ import { TGetAllTodosOutput } from "../type";
 import styles from "./TodoCard.module.css";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
-import { useTodoCardCtx } from "../store/todo-card";
+import { useTodoListCtx } from "../store/todo-list";
 
 export function TodoCard() {
   const {
@@ -17,7 +17,7 @@ export function TodoCard() {
     setSelectedDescription,
     setSelectedId,
     setSelectedTitle,
-  } = useTodoCardCtx();
+  } = useTodoListCtx();
   const qc = useQueryClient();
 
   const { data, isLoading, isError, error } = useQuery<
