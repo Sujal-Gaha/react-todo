@@ -92,12 +92,42 @@ export function TodoCard() {
     setIsEditModalOpen(false);
   };
 
+  const updateStatus = useMutation({
+    mutationFn: async (todoId: string) => {
+      const response = await fetch(
+        `http://localhost:8080/api/v1/todos/toggle/status/${todoId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = response.json();
+      return data;
+    },
+    onSuccess: (data) => {
+      console.log(data);
+      qc.invalidateQueries({
+        queryKey: ["/api/v1/todos"],
+      });
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const handleChangeCompleted = (id: string) => {
+    updateStatus.mutateAsync(id);
+  };
+
   if (isLoading) return <p>Loading todos...</p>;
   if (isError) return <p>Loading todos errors: {error.message || ""}</p>;
 
   return (
     <div className={styles.cardContainer}>
       {data?.data.map((todo) => {
+        console.log("todo isComplete", todo.isComplete);
         return (
           <div key={todo._id} className={styles.card}>
             <div className={styles.buttons}>
@@ -121,6 +151,16 @@ export function TodoCard() {
             <div className={styles.content}>
               <h2>Title: {todo.title}</h2>
               <p>Description: {todo.description}</p>
+              <label htmlFor="status">Completed</label>
+              <input
+                type="checkbox"
+                name="status"
+                id="status"
+                checked={todo.isComplete}
+                onChange={() => {
+                  handleChangeCompleted(todo._id);
+                }}
+              />
             </div>
           </div>
         );

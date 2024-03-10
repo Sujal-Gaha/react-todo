@@ -3,7 +3,7 @@ export type TTodo = {
   _id: string;
   createdAt: string;
   description: string;
-  isDone: string;
+  isComplete: boolean;
   title: string;
   updatedAt: string;
 };
