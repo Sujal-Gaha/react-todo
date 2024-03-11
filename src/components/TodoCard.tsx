@@ -156,14 +156,11 @@ export function TodoCard() {
               />
             </div>
             <div className={styles.content}>
-              <Link
-                to={`/todos/${todo._id}`}
-                style={{ textDecoration: "none", color: "white" }}
-              >
+              <Link to={`/todos/${todo._id}`}>
                 <h2>Title: {todo.title}</h2>
               </Link>
               <p>Description: {todo.description}</p>
-              <label htmlFor="status">Completed</label>
+              <label htmlFor="status">Completed:</label>
               <input
                 type="checkbox"
                 name="status"

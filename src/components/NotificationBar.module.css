@@ -6,6 +6,7 @@
   background-color: #1f2937;
   box-shadow: 0px -4px #57b8ec;
   color: white;
+  height: 80px;
 }
 
 .closeBtn {
@@ -20,4 +21,9 @@
 
 .text {
   padding: 2px 20px;
+}
+
+.text h3,
+.text p {
+  margin: 10px 0;
 }

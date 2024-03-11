@@ -92,7 +92,6 @@ export function FormContainer() {
             setTitle(value);
           }}
         />{" "}
-        <br />
         <input
           value={description}
           name="description"
@@ -104,7 +103,6 @@ export function FormContainer() {
             setDescription(value);
           }}
         />
-        <br />
         <button type="submit" className={styles.addBtn}>
           Add
         </button>

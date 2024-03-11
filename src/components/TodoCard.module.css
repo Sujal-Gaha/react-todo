@@ -1,15 +1,18 @@
 .cardContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 80%;
+  margin: 40px auto;
 }
 
 .card {
   border: 1px solid #ccc;
   padding: 10px;
-  width: 100vh;
-  margin: 10px 120px;
   border-radius: 18px;
   background-color: #1f2937;
+  margin: 10px 0;
+  height: 150px;
+  overflow: auto;
 }
 
 .buttons {
@@ -26,7 +29,7 @@
 
 .button:hover {
   transition: 0.3s ease-in all;
-  color: #57b8ec;
+  color: #6584af;
 }
 
 .content {
@@ -34,8 +37,21 @@
   padding-left: 20px;
 }
 
-.content h2 {
-  margin-top: 0;
+.content a {
+  text-decoration: none;
+  color: white;
+}
+
+.content a h2 {
+  padding: 0 10px;
+}
+
+.content p {
+  padding: 10px;
+}
+
+.content label {
+  padding: 10px;
 }
 
 .modalContainer {
@@ -62,10 +78,14 @@
 }
 
 .modalContainer form button {
-  background-color: springgreen;
+  background-color: #6584af;
   width: 61%;
   border-radius: 10px;
   cursor: pointer;
+  border: none;
+  height: 24px;
+  color: rgb(253, 248, 248);
+  font-weight: 800;
 }
 
 .editCloseBtn {

@@ -8,21 +8,13 @@
 
 .todoDetail a {
   text-decoration: none;
-  color: white;
-  font-size: 18px;
   float: right;
-  background-color: springgreen;
-  border-radius: 12px;
-  padding: 2px;
-}
-
-.todoDetail a span {
-  padding: 10px;
-  font-size: 20px;
 }
 
 .leftArrow {
+  color: #6584af;
   padding-top: 5px;
+  font-size: 32px;
 }
 
 .header {
@@ -32,6 +24,7 @@
 
 .header h1 {
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .header h5 {
@@ -41,4 +34,10 @@
 .body {
   color: white;
   padding: 20px 70px 0;
+}
+
+.body h2,
+.body h3,
+.body h4 {
+  padding: 10px 0;
 }

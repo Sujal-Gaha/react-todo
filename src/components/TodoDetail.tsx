@@ -27,7 +27,6 @@ export function TodoDetail() {
   return (
     <div className={styles.todoDetail}>
       <Link to="/todos">
-        <span>Go Back</span>
         <IoIosArrowDropleftCircle className={styles.leftArrow} />
       </Link>
       <div className={styles.header}>
@@ -39,8 +38,8 @@ export function TodoDetail() {
         <h2>Description: </h2>
         <h4>{data?.data.description}</h4>
         <h3>Completed: {data?.data.isComplete ? " Yes" : " No"}</h3>
-        <h4>Todo's id: {data?.data._id}</h4>
-        <h5>Last Updated At: {data?.data.updatedAt}</h5>
+        <h3>Todo's id: {data?.data._id}</h3>
+        <h3>Last Updated At: {data?.data.updatedAt}</h3>
       </div>
     </div>
   );
