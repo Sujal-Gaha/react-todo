@@ -3,6 +3,7 @@ import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TodoContainer } from "./components/TodoContainer";
 import { TodoListProvider } from "./store/todo-list";
+import { TodoDetail } from "./components/TodoDetail";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,14 @@ const router = createBrowserRouter([
     element: (
       <TodoListProvider>
         <TodoContainer />
+      </TodoListProvider>
+    ),
+  },
+  {
+    path: "/todos/:id",
+    element: (
+      <TodoListProvider>
+        <TodoDetail />
       </TodoListProvider>
     ),
   },

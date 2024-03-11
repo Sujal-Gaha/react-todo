@@ -23,3 +23,10 @@ export type TGetAllTodosOutput = {
   statusCode: 200;
   success: boolean;
 };
+
+export type TGetTodoById = {
+  data: TTodo;
+  message: string;
+  statusCode: 200;
+  success: boolean;
+};

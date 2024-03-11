@@ -1,0 +1,44 @@
+.todoDetail {
+  width: 100vh;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: #111827;
+  border-radius: 18px;
+}
+
+.todoDetail a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  float: right;
+  background-color: springgreen;
+  border-radius: 12px;
+  padding: 2px;
+}
+
+.todoDetail a span {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.leftArrow {
+  padding-top: 5px;
+}
+
+.header {
+  color: white;
+  padding: 50px 70px 0px;
+}
+
+.header h1 {
+  text-align: center;
+}
+
+.header h5 {
+  text-align: right;
+}
+
+.body {
+  color: white;
+  padding: 20px 70px 0;
+}

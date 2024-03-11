@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import styles from "./NotificationBar.module.css";
 import { useTodoListCtx } from "../store/todo-list";

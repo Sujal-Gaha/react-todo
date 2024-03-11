@@ -77,7 +77,7 @@ export function FormContainer() {
             }, 2000);
             setTimeout(() => {
               setShowNotification(false);
-            }, 6000);
+            }, 5000);
           }
         }}
       >

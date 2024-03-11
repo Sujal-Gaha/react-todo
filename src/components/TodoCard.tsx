@@ -4,6 +4,7 @@ import styles from "./TodoCard.module.css";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
 import { useTodoListCtx } from "../store/todo-list";
+import { Link } from "react-router-dom";
 
 export function TodoCard() {
   const {
@@ -155,7 +156,12 @@ export function TodoCard() {
               />
             </div>
             <div className={styles.content}>
-              <h2>Title: {todo.title}</h2>
+              <Link
+                to={`/todos/${todo._id}`}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <h2>Title: {todo.title}</h2>
+              </Link>
               <p>Description: {todo.description}</p>
               <label htmlFor="status">Completed</label>
               <input
@@ -186,7 +192,7 @@ export function TodoCard() {
               setTimeout(() => {
                 handleFormSubmission();
                 setIsUpdatingModalOpen(false);
-              }, 2500);
+              }, 2000);
             }}
           >
             <br />
