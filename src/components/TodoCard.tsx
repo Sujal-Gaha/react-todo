@@ -5,6 +5,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
 import { useTodoListCtx } from "../store/todo-list";
 import { Link } from "react-router-dom";
+import Switch from "@mui/material/Switch";
 
 export function TodoCard() {
   const {
@@ -161,14 +162,9 @@ export function TodoCard() {
               </Link>
               <p>Description: {todo.description}</p>
               <label htmlFor="status">Completed:</label>
-              <input
-                type="checkbox"
-                name="status"
-                id="status"
+              <Switch
                 checked={todo.isComplete}
-                onChange={() => {
-                  handleChangeCompleted(todo._id);
-                }}
+                onChange={() => handleChangeCompleted(todo._id)}
               />
             </div>
           </div>
