@@ -64,7 +64,7 @@ export function FormContainer() {
   };
 
   const addNotification = () =>
-    toast("A new todo added successfully!", {
+    toast.info("A new todo added successfully!", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
