@@ -1,8 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { TCreateTodoInput, TTodoCreateOutput } from "../type";
-import { NotificationBar } from "./NotificationBar";
+// import { NotificationBar } from "./NotificationBar";
 import styles from "./FormContainer.module.css";
 import { useTodoListCtx } from "../store/todo-list";
+
+import { Bounce, ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export function FormContainer() {
   const qc = useQueryClient();
@@ -12,8 +16,6 @@ export function FormContainer() {
     setTitle,
     description,
     setDescription,
-    showNotification,
-    setShowNotification,
     isAddingModalOpen,
     setIsAddingModalOpen,
   } = useTodoListCtx();
@@ -60,9 +62,22 @@ export function FormContainer() {
       description: description,
     });
   };
+
+  const addNotification = () =>
+    toast("A new todo added successfully!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
   return (
     <>
-      {showNotification ? <NotificationBar /> : null}
+      <ToastContainer />
       <h1 className={styles.header}>My Todos</h1>
       <form
         className={styles.formElement}
@@ -73,11 +88,8 @@ export function FormContainer() {
             setTimeout(() => {
               handleAddTodo();
               setIsAddingModalOpen(false);
-              setShowNotification(true);
-            }, 2000);
-            setTimeout(() => {
-              setShowNotification(false);
-            }, 5000);
+              addNotification();
+            }, 1500);
           }
         }}
       >

@@ -16,8 +16,6 @@ type TTodoList = {
   setTitle: React.Dispatch<React.SetStateAction<string>>;
   description: string;
   setDescription: React.Dispatch<React.SetStateAction<string>>;
-  showNotification: boolean;
-  setShowNotification: React.Dispatch<React.SetStateAction<boolean>>;
   isAddingModalOpen: boolean;
   setIsAddingModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -38,8 +36,6 @@ const TodoListCtx = createContext<TTodoList>({
   setTitle: () => {},
   description: "",
   setDescription: () => {},
-  showNotification: false,
-  setShowNotification: () => {},
   isAddingModalOpen: false,
   setIsAddingModalOpen: () => {},
 });
@@ -53,7 +49,6 @@ export function TodoListProvider({ children }: { children: React.ReactNode }) {
     useState<boolean>(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [showNotification, setShowNotification] = useState<boolean>(false);
   const [isAddingModalOpen, setIsAddingModalOpen] = useState<boolean>(false);
   return (
     <TodoListCtx.Provider
@@ -72,8 +67,6 @@ export function TodoListProvider({ children }: { children: React.ReactNode }) {
         setTitle,
         description,
         setDescription,
-        showNotification,
-        setShowNotification,
         isAddingModalOpen,
         setIsAddingModalOpen,
       }}
