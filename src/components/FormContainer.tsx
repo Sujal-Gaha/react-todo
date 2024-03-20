@@ -63,7 +63,7 @@ export function FormContainer() {
     });
   };
 
-  const addNotification = () =>
+  const addNotification = () => {
     toast.info("A new todo added successfully!", {
       position: "top-right",
       autoClose: 3000,
@@ -75,9 +75,22 @@ export function FormContainer() {
       theme: "dark",
       transition: Bounce,
     });
+  };
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
       <h1 className={styles.header}>My Todos</h1>
       <form
         className={styles.formElement}
