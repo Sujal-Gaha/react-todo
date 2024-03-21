@@ -1,11 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { TCreateTodoInput, TTodoCreateOutput } from "../type";
-// import { NotificationBar } from "./NotificationBar";
 import styles from "./FormContainer.module.css";
 import { useTodoListCtx } from "../store/todo-list";
-
 import { Bounce, ToastContainer, toast } from "react-toastify";
-
 import "react-toastify/dist/ReactToastify.css";
 
 export function FormContainer() {

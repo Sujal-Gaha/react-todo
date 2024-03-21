@@ -62,7 +62,6 @@ export function TodoCard() {
   });
 
   const handleDeleteTodoBtnClick = async (todoId: string) => {
-    console.log("handleDeleteTodoBtnClick function called", todoId);
     await deleteTodoMutation.mutateAsync(todoId);
   };
 
@@ -135,7 +134,6 @@ export function TodoCard() {
   return (
     <div className={styles.cardContainer}>
       {data?.data.map((todo) => {
-        console.log("todo isComplete", todo.isComplete);
         return (
           <div key={todo._id} className={styles.card}>
             <div className={styles.buttons}>
@@ -151,7 +149,6 @@ export function TodoCard() {
               <MdDelete
                 className={styles.button}
                 onClick={() => {
-                  console.log("Delete button clicked");
                   handleDeleteTodoBtnClick(todo._id);
                 }}
               />
